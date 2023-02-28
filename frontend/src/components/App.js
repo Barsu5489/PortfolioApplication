@@ -1,28 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import UserHome from "./UserHome";
 import Projects from "./Projects";
 import Skills from "./Skills";
 import Auth from "./Auth";
-import { useEffect } from "react";
+
 function App() {
-useEffect(() => {
-  fetch('http://localhost:3000/users')
-  .then((res)=> res.json())
-  .then((data)=>{
-    console.log(data)
-  })
-},[])
-
   return (
-    <div className="App">
+    <BrowserRouter>
       <Header />
-      <UserHome />
-      <Projects />
-      <Skills />
-      <Auth />
-     <h1>Header</h1>
-
-    </div>
+      <Routes>
+        <Route path="/" element={<UserHome />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

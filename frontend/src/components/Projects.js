@@ -2,51 +2,7 @@ import React from 'react'
 
 function Projects() {
   return (
-//     <>
-//     {/* <div className='projectsArea'>
-//     <section class="projects">
-//   <h1>My Projects</h1>
-//   <div class="project-list">
-//     <div class="project">
-//       <img src="project1.jpg" alt="Project 1"/>
-//       <h2>Project 1</h2>
-//       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-//       <a href="#">Learn more</a>
-//     </div>
-//     <div class="project">
-//       <img src="project2.jpg" alt="Project 2"/>
-//       <h2>Project 2</h2>
-//       <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-//       <a href="#">Learn more</a>
-//     </div>
-//     <div class="project">
-//       <img src="project3.jpg" alt="Project 3"/>
-//       <h2>Project 3</h2>
-//       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-//       <a href="#">Learn more</a>
-//     </div>
-//   </div>
-// </section>
-// <section class="skills">
-//   <h2>Skills</h2>
-//   <div class="skill-list">
-//     <div class="skill">
-//       <h3>HTML</h3>
-//       <div class="skill-bar html"></div>
-//     </div>
-//     <div class="skill">
-//       <h3>CSS</h3>
-//       <div class="skill-bar css"></div>
-//     </div>
-//     <div class="skill">
-//       <h3>JavaScript</h3>
-//       <div class="skill-bar js"></div>
-//     </div>
-//   </div>
-// </section>
-//     </div> */}
 
-//     </>
 <>
 <div className="project-page">
   <h1 className="project-page__title">My Projects</h1>
@@ -77,3 +33,4 @@ function Projects() {
 }
 
 export default Projects
+
