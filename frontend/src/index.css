@@ -299,3 +299,12 @@ nav {
 .skills__button:hover {
   background-color: #666;
 }
+.authenticate{
+  display: flex;
+  justify-content: center;
+ }
+ .login-form, .signup-form{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+ }
