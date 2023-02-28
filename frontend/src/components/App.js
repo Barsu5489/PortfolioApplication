@@ -1,11 +1,13 @@
 import Header from "./Header";
-import Home from "./Home";
+import UserHome from "./UserHome";
+import Projects from "./Projects";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Home />
+      <UserHome />
+      <Projects />
      <h1>Header</h1>
 
     </div>
