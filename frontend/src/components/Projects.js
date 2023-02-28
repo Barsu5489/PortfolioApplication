@@ -48,24 +48,24 @@ function Projects() {
 
 //     </>
 <>
-<div class="project-page">
-  <h1 class="project-page__title">My Projects</h1>
+<div className="project-page">
+  <h1 className="project-page__title">My Projects</h1>
 
-  <div class="project">
-    <div class="project__header">
-      <h2 class="project__title">Project Title</h2>
-      <p class="project__date">January 1, 2023</p>
+  <div className="project">
+    <div className="project__header">
+      <h2 className="project__title">Project Title</h2>
+      <p className="project__date">January 1, 2023</p>
     </div>
-    <p class="project__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo metus euismod, vehicula velit vel, pellentesque urna. Donec venenatis, sem eu malesuada dapibus, lectus tellus ultricies arcu, ut convallis dolor massa vel metus.</p>
-    <div class="project__footer">
-      <ul class="project__skills">
-        <li class="project__skill">Skill 1</li>
-        <li class="project__skill">Skill 2</li>
-        <li class="project__skill">Skill 3</li>
+    <p className="project__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo metus euismod, vehicula velit vel, pellentesque urna. Donec venenatis, sem eu malesuada dapibus, lectus tellus ultricies arcu, ut convallis dolor massa vel metus.</p>
+    <div className="project__footer">
+      <ul className="project__skills">
+        <li className="project__skill">Skill 1</li>
+        <li className="project__skill">Skill 2</li>
+        <li className="project__skill">Skill 3</li>
       </ul>
-      <div class="project__buttons">
-        <button class="project__button project__button--edit">Edit</button>
-        <button class="project__button project__button--delete">Delete</button>
+      <div className="project__buttons">
+        <button className="project__button project__button--edit">Edit</button>
+        <button className="project__button project__button--delete">Delete</button>
       </div>
     </div>
   </div>

@@ -3,17 +3,17 @@ import React from 'react'
 function Skills() {
   return (
     <div>Skills
-        <div class="skills">
-  <h2 class="skills__title">Skills</h2>
-  <ul class="skills__list">
-    <li class="skills__item">HTML</li>
-    <li class="skills__item">CSS</li>
-    <li class="skills__item">JavaScript</li>
-    <li class="skills__item">JavaScript</li>
-    <li class="skills__item">JavaScript</li>
-     <li class="skills__item">JavaScript</li>
+        <div className="skills">
+  <h2 className="skills__title">Skills</h2>
+  <ul className="skills__list">
+    <li className="skills__item">HTML</li>
+    <li className="skills__item">CSS</li>
+    <li className="skills__item">JavaScript</li>
+    <li className="skills__item">JavaScript</li>
+    <li className="skills__item">JavaScript</li>
+     <li className="skills__item">JavaScript</li>
   </ul>
-  <button class="skills__button" onclick="addSkill()">Add Skill</button>
+  <button className="skills__button" >Add Skill</button>
 </div>
     </div>
   )
