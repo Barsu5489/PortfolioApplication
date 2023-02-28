@@ -1,6 +1,7 @@
 import Header from "./Header";
 import UserHome from "./UserHome";
 import Projects from "./Projects";
+import Skills from "./Skills";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Header />
       <UserHome />
       <Projects />
+      <Skills />
      <h1>Header</h1>
 
     </div>
