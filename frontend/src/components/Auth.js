@@ -11,11 +11,13 @@ function Auth() {
         <button type="submit">Login</button>
         </div>
         <div className="signup-form">
-        <input type="email" name="" id="" placeholder='email'/>
-        <input type="name" name="" id="" placeholder='username'/>
-        <input type="password" placeholder='password'/>
-        <input type="password" placeholder='confirm password'/>
+            <form action="http://localhost:9292/users" method="post" >
+        <input type="email" name="email"  placeholder='email'required/>
+        <input type="name" name="first_name" placeholder='First name'/>
+        <input type="name" name="last_name" placeholder="Last name"/>
+        <input type="password" name='password' placeholder='password'/>
         <button type="submit">signup</button>
+        </form>
 
         </div>
 
