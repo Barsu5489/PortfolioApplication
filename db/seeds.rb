@@ -10,4 +10,6 @@ puts "🌱 Seeding spices..."
     )
   end
 
+  
+
 puts "✅ Done seeding!"
