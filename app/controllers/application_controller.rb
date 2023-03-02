@@ -45,6 +45,7 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  
    post '/login' do
     # Find user that has a specific email
     user = User.find_by(email: params[:email])
