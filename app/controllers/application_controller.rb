@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/projects' do
-    projects = Project.all
+    projects = Project.limit(10).all
     projects.to_json
   end
 
