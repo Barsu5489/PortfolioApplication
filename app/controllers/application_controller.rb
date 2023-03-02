@@ -16,9 +16,14 @@ class ApplicationController < Sinatra::Base
     user = User.all
     user.to_json
   end
+
+  get '/projects' do
+    projects = Project.all
+    projects.to_json
+  end
  # Adding new user
 
- 
+
   post '/users' do 
     new_user = User.create(
       email: params[:email],
@@ -46,6 +51,7 @@ class ApplicationController < Sinatra::Base
         {error: 'Invalid email or Password'}
       end
    end
+
 
 
 end
