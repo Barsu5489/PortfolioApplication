@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 
 function Projects() {
-  return (
+  const [project, setProject] = useState(null)
 
+  useEffect(()=>{
+    fetch('http://localhost:9292/projects')
+    .then(res => res.json()
+    .then(data=> {
+     return setProject(data)
+    }
+      ))
+  },[])
+  console.log(project)
+
+  return (
 <>
 <div className="project-page">
   <h1 className="project-page__title">My Projects</h1>

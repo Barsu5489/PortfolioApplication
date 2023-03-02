@@ -19,7 +19,7 @@ puts "🌱 Seeding spices..."
     end
   end
   User.all.each do |user|
-    50.times do
+    5.times do
       user.projects.create(
         title: Faker::Book.title,
         description: Faker::Lorem.paragraph_by_chars(number: 256),

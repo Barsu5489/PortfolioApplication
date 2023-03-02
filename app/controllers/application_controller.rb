@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
  # Adding new user
 
 
-  post '/users' do 
+  post '/signup' do 
     new_user = User.create(
       email: params[:email],
      password_digest: params[:password],
