@@ -17,6 +17,8 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
  # Adding new user
+
+ 
   post '/users' do 
     new_user = User.create(
       email: params[:email],
@@ -32,6 +34,7 @@ class ApplicationController < Sinatra::Base
       {error: error}
     end
   end
+
    post '/login' do
     # Find user that has a specific email
     user = User.find_by(email: params[:email])
