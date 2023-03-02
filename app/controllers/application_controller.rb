@@ -21,6 +21,11 @@ class ApplicationController < Sinatra::Base
     projects = Project.all
     projects.to_json
   end
+
+  get '/skills' do 
+    skills = Skill.all
+    skills.to_json
+  end
  # Adding new user
 
 
