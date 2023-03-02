@@ -16,11 +16,16 @@ function Projects() {
 
   const userProject = projects.map((project)=>
   {
+    const projectTime = new Date(project.created_at)
+    const month = projectTime.toLocaleString('default',{month: 'long'})
+    const day = projectTime.getDate()
+    const year = projectTime.getFullYear();
+    const timeString = `${month} ${day} ${year}` 
     return (
       <div className="project" key={project.id}>
       <div className="project__header">
         <h2 className="project__title">{project.title}</h2>
-        <p className="project__date">January 1, 2023</p>
+        <p className="project__date">{timeString}</p>
       </div>
       <p className="project__description">{project.description}</p>
       <div className="project__footer">
