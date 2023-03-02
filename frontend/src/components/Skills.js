@@ -1,21 +1,33 @@
-import React from 'react'
 
+import React, { useEffect, useState } from 'react'
 function Skills() {
+const [skills, setSkills] = useState([])
+
+useEffect(()=>{
+  fetch('http://localhost:9292/skills')
+  .then((res)=> res.json())
+  .then((skills)=>{
+    return setSkills(skills)
+  })
+},[])
+console.log(skills)
+const skill = skills.map((skill)=>{
   return (
-    <div>Skills
-        <div className="skills">
-  <h2 className="skills__title">Skills</h2>
-  <ul className="skills__list">
-    <li className="skills__item">HTML</li>
-    <li className="skills__item">CSS</li>
-    <li className="skills__item">JavaScript</li>
-    <li className="skills__item">JavaScript</li>
-    <li className="skills__item">JavaScript</li>
-     <li className="skills__item">JavaScript</li>
-  </ul>
-  <button className="skills__button" >Add Skill</button>
-</div>
-    </div>
+    <div className="skills" key={skill.id}>
+    <ul className="skills__list">
+      <li className="skills__item">{skill.name} <span><button className='project__button project__button--delete'>Delete</button></span></li> 
+    </ul>
+  </div>
+
+  )
+})
+
+  return (
+    <>
+    {skill}
+    <button className="skills__button" >Add Skill</button>
+    </>
+    
   )
 }
 
