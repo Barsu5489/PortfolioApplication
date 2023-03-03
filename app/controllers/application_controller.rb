@@ -19,7 +19,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/projects' do
-    projects = Project.limit(10).all
+    user = User.find(session[:user_id])
+    # projects = Project.limit(10).all
+    projects = user.projects
     projects.to_json
   end
 
@@ -28,8 +30,9 @@ class ApplicationController < Sinatra::Base
     project.to_json
   end
 
-  get '/skills' do 
-    skills = Skill.limit(10).all
+  get '/skills' do  
+    user = User.find(session[:user_id])
+    skills = user.skills
     skills.to_json
   end
 
