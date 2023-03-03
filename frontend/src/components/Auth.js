@@ -36,19 +36,29 @@ const [error, setError] = useState('')
   }
   return (
     <>
-    <div className='authenticate'>
+    
         <div className="login-form">
             <form action="http://localhost:9292/login" method='post' onSubmit={handleLogin}>
-        <input type="email" name="email" id="" placeholder='email' value={email} onChange={e=>setEmail(e.target.value)}/>
-        <input type="name" name="username" id="" placeholder='username' value={password} onChange={e=>setPassword(e.target.value)}/>
-        <input type="password" name='password' placeholder='password'/>
-        <button type="submit" >Login</button>
+            <h1>Log in to portfolio App</h1>
+            <div className="form-group">
+            <label>Email</label>
+        <input type="email" name="email" className="form-control"  id="" placeholder='email' value={email} onChange={e=>setEmail(e.target.value)}/>
+        </div>
+        <div className="form-group">
+        <label>Password</label>
+        <input type="password" className="form-control"  name="password" id="" placeholder='password' value={password} onChange={e=>setPassword(e.target.value)}/>
+        </div>
+        <button type="submit" className="btn btn-primary">Log In</button>
+        <div class="forgot-password">
+        <span><p>Don't have an account?</p></span> <a> <span onClick={()=>redirect('/signup')}>Create!</span></a>
+    </div>
         <p style={{color:'red'}}>{error}</p>
+        
         </form>
         </div>
 
 
-    </div>
+
     </>
   )
 }
