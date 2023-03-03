@@ -29,6 +29,7 @@ useEffect(() => {
 
 const skill = skills.map((skill)=>{
   return (
+    
     <div className="skills" key={skill.id}>
     <ul className="skills__list">
       <li className="skills__item">{skill.name} <span>
@@ -43,8 +44,18 @@ const skill = skills.map((skill)=>{
 
   return (
     <>
+    <div className='skillContainer'>
+      <div className='skills__contain'>
     {skill}
-    <button className="skills__button" >Add Skill</button>
+    </div>
+
+      <div className="add-skill">
+        <div style={{marginRight:'50%'}}>
+    <input type="text" placeholder="Add a skill" />
+    <button>Add</button>
+    </div>
+  </div>
+  </div>
     </>
     
   )

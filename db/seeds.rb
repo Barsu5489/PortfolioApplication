@@ -23,7 +23,7 @@ puts "🌱 Seeding spices..."
       user.projects.create(
         title: Faker::Book.title,
         description: Faker::Lorem.paragraph_by_chars(number: 256),
-        image_url: Faker::Internet.url,
+        image_url: Faker::LoremFlickr.image(size: "50x60"),
         repo_url: Faker::Internet.url
       )
     end

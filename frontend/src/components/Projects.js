@@ -4,6 +4,19 @@ import React, { useEffect, useState } from 'react'
 function Projects() {
   const [projects, setProject] = useState([])
 
+function handleDelete(id){
+  fetch(`http://localhost:9292/projects/${id}`,{
+    method: 'DELETE',
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }).then((res)=>{
+    if (res.ok){
+      setProject(projects.filter(project=>project.id !== id))
+    }
+  })
+}
+
   useEffect(()=>{
     fetch('http://localhost:9292/projects')
     .then(res => res.json()
@@ -27,6 +40,7 @@ function Projects() {
         <h2 className="project__title">{project.title}</h2>
         <p className="project__date">{timeString}</p>
       </div>
+      <img src= {project.image_url}alt="missing" srcSet="" />
       <p className="project__description">{project.description}</p>
       <div className="project__footer">
         <ul className="project__skills">
@@ -36,7 +50,8 @@ function Projects() {
         </ul>
         <div className="project__buttons">
           <button className="project__button project__button--edit">Edit</button>
-          <button className="project__button project__button--delete">Delete</button>
+          <button onClick={()=>handleDelete(project.id)}
+          className="project__button project__button--delete">Delete</button>
         </div>
       </div>
     </div>

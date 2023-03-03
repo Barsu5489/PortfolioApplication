@@ -21,13 +21,23 @@ class ApplicationController < Sinatra::Base
     projects = Project.limit(10).all
     projects.to_json
   end
+  
+  delete '/projects/:id' do
+    project = Project.find(params[:id])
+    project.to_json
+  end
 
   get '/skills' do 
-    skills = Skill.all
+    skills = Skill.limit(10).all
     skills.to_json
   end
- # Adding new user
 
+  delete '/skills/:id' do
+    skill = Skill.find(params[:id])
+    skill.destroy
+    skill.to_json
+  end
+ # Adding new user
 
   post '/signup' do 
     new_user = User.create(
