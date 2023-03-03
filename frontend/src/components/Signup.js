@@ -10,10 +10,10 @@ function Signup() {
     const [last_name, setLastName] = useState('')
     const [error, setError] = useState('')
     function handleSubmit(e){
-        e.preventDefault()
+    e.preventDefault()
         fetch('http://localhost:9292/signup',{
             method: 'POST',
-            header:{
+            headers:{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
@@ -24,15 +24,20 @@ function Signup() {
             })
         }).then((res)=>{
             if(res.ok){
+                redirect('/')
                 return res.json()
+                
             }else{
                 throw new Error('Email already exists')
             }
         }).then((info)=>{
-            console.log(info)
-            redirect('/')
+            if(info.error === "Email already exists"){
+                setError(info.error)
+            }
+            
         }).catch(error=>{
             console.log(error.message)
+            console.log(error.response);
             setError(error.message)
         })
     }
@@ -40,7 +45,7 @@ function Signup() {
     <div>
         <div className="signup-form">    
         <h1>The Art of Portfoli-Oh Yeah!</h1>
-        <form action="http://localhost:9292/signup" method="post"  onSubmit={handleSubmit}>
+        <form action="" method="post"  onSubmit={handleSubmit}>
         <div className="form-group">
             <label>Email</label>
         <input type="email" name="email" className="form-control"  id="" placeholder='email' value={email} onChange={e=>setEmail(e.target.value)}/>
@@ -59,7 +64,7 @@ function Signup() {
         </div>
         <button type="submit" className="btn btn-primary">Signup</button>
         <div class="forgot-password">
-        <span><p>Already have an account?</p></span> <a> <span onClick={()=>redirect('/auth')}>Login!</span></a>
+        <span><p>Already have an account?</p></span> <p> <span onClick={()=>redirect('/auth')}>Login!</span></p>
     </div>
         <p style={{color:'red'}}>{error}</p>
         </form>

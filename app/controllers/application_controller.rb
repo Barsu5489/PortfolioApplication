@@ -19,9 +19,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/projects' do
-    user = User.find(session[:user_id])
-    # projects = Project.limit(10).all
-    projects = user.projects
+    projects = Project.limit(10).all
     projects.to_json
   end
 
@@ -30,9 +28,8 @@ class ApplicationController < Sinatra::Base
     project.to_json
   end
 
-  get '/skills' do  
-    user = User.find(session[:user_id])
-    skills = user.skills
+  get '/skills' do 
+    skills = Skill.limit(10).all
     skills.to_json
   end
 
@@ -49,24 +46,29 @@ class ApplicationController < Sinatra::Base
     skill.to_json
   end
  # Adding new user
+ post '/signup' do 
+  user = User.find_by(email: params[:email])
 
-  post '/signup' do 
+  if user
+    { error: 'Email already exists' }.to_json
+  else
     new_user = User.create(
       email: params[:email],
-     password_digest: params[:password],
-     first_name: params[:first_name],
+      password_digest: params[:password],
+      first_name: params[:first_name],
       last_name: params[:last_name]
     )
 
     if new_user.valid?
-    session[:user_id] = new_user.id
-    new_user.to_json
-    redirect "http://localhost:3000/projects"
+      session[:user_id] = new_user.id
+      { user: new_user }.to_json
     else
       status 401
-      {error: 'Email already exist'}.to_json
+      { error: 'Invalid user data' }.to_json
     end
   end
+end
+
 
   
    post '/login' do

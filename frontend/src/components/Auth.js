@@ -50,7 +50,7 @@ const [error, setError] = useState('')
         </div>
         <button type="submit" className="btn btn-primary">Log In</button>
         <div class="forgot-password">
-        <span><p>Don't have an account?</p></span> <a> <span onClick={()=>redirect('/signup')}>Create!</span></a>
+        <span><p>Don't have an account?</p></span> <p> <span onClick={()=>redirect('/signup')}>Create!</span></p>
     </div>
         <p style={{color:'red'}}>{error}</p>
         
