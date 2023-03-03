@@ -51,8 +51,11 @@ const skill = skills.map((skill)=>{
 
       <div className="add-skill">
         <div style={{marginRight:'50%'}}>
-    <input type="text" placeholder="Add a skill" />
-    <button>Add</button>
+
+          <form action="http://localhost:9292/skills" method="post">
+    <input type="text" name='name' placeholder="Add a skill" required/>
+    <button type="submit">Add</button>
+    </form>
     </div>
   </div>
   </div>

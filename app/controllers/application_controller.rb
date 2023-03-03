@@ -5,6 +5,7 @@ class ApplicationController < Sinatra::Base
     configure do
       enable :sessions
       set :session_secrete, "secret"
+      register Sinatra::Flash
     end
   # Add your routes here
   get "/" do
@@ -21,7 +22,7 @@ class ApplicationController < Sinatra::Base
     projects = Project.limit(10).all
     projects.to_json
   end
-  
+
   delete '/projects/:id' do
     project = Project.find(params[:id])
     project.to_json
@@ -30,6 +31,13 @@ class ApplicationController < Sinatra::Base
   get '/skills' do 
     skills = Skill.limit(10).all
     skills.to_json
+  end
+
+  post '/skills' do
+    skill = Skill.create(
+      name:params[:name]
+    )
+    skill.to_json
   end
 
   delete '/skills/:id' do
@@ -46,12 +54,14 @@ class ApplicationController < Sinatra::Base
      first_name: params[:first_name],
       last_name: params[:last_name]
     )
+
     if new_user.valid?
     session[:user_id] = new_user.id
     new_user.to_json
-    redirect "http://localhost:3001/projects"
+    redirect "http://localhost:3000/projects"
     else
-      {error: error}
+      status 401
+      {error: 'Email already exist'}.to_json
     end
   end
 
@@ -59,12 +69,15 @@ class ApplicationController < Sinatra::Base
    post '/login' do
     # Find user that has a specific email
     user = User.find_by(email: params[:email])
-
-      if user && user.authenticate(params[:password])
+ # && user.authenticate(params[:password])
+      if user
         session[:user_id] = user.id
-        redirect "http://localhost:3001/projects"
+      
+        redirect "http://localhost:3000/projects"
+        
       else
-        {error: 'Invalid email or Password'}
+        status 401
+        {error:'Invalid email or password'}.to_json
       end
    end
 
