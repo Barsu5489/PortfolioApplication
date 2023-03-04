@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Projects from './Projects';
 function Auth() {
-
+  console.log('Auth component rendered');
   const redirect = useNavigate()
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
@@ -31,8 +31,9 @@ const [userId, setUserId] = useState(null)
         throw new Error('Invalid email or Password')
       }
     }).then((info)=>{
-      console.log(info.user.id)
       setUserId(info.user.id)
+      console.log(info.user.id)
+      localStorage.setItem('userId', info.user.id)
       redirect('/')
     }).catch(error=>{
       console.log(error.message)
@@ -40,11 +41,11 @@ const [userId, setUserId] = useState(null)
       setError(error.message)
     })
   }
+  console.log('userId')
   return (
     <>
-    <Projects userId ={userId}/>
         <div className="login-form">
-            <form action="http://localhost:9292/login" method='post' onSubmit={handleLogin}>
+            <form action="" method='post' onSubmit={handleLogin}>
             <h1>Log in to portfolio App</h1>
             <div className="form-group">
             <label>Email</label>

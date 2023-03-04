@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 
 function Projects() {
+  const userId = localStorage.getItem('userId');
+  console.log(userId)
   const [projects, setProject] = useState([])
 
 function handleDelete(id){
@@ -18,7 +20,7 @@ function handleDelete(id){
 }
 
   useEffect(()=>{
-    fetch('http://localhost:9292/projects')
+    fetch(`http://localhost:9292/projects/${userId}`)
     .then(res => res.json()
     .then(data=> {
      return setProject(data)
