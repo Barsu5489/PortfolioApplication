@@ -35,9 +35,10 @@ function handleDelete(id){
     const year = projectTime.getFullYear();
     const timeString = `${month} ${day} ${year}` 
     return (
+
       <div className="project" key={project.id}>
       <div className="project__header">
-        <h2 className="project__title">{project.title}</h2>
+        <h2 className="project__title">{project.title}</h2> <span><button>Add project</button></span>
         <p className="project__date">{timeString}</p>
       </div>
       <img src= {project.image_url}alt="missing" srcSet="" />

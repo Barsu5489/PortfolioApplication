@@ -73,7 +73,7 @@ end
        # session[:user_id] = user.id
        user.to_json
       
-        
+       { user: user }.to_json
       else
         status 401
         {error:'Invalid email or password'}.to_json
