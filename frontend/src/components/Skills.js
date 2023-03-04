@@ -26,7 +26,9 @@ useEffect(() => {
       console.error(error);
     });
 }, []);
-
+ if (skills === []){
+  return
+ }
 const skill = skills.map((skill)=>{
   return (
     

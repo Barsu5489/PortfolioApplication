@@ -1,12 +1,10 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
-
-    configure do
-      enable :sessions
-      set :session_secrete, "secret"
-      register Sinatra::Flash
-    end
+    # configure do
+    #   enable :sessions
+    #   set :session_secret, "secret"
+    # end
   # Add your routes here
   get "/" do
     { message: "Good luck with your project!" }.to_json
@@ -18,24 +16,20 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
-  get '/projects' do
-    projects = Project.limit(10).all
-    projects.to_json
-  end
 
-  delete '/projects/:id' do
-    project = Project.find(params[:id])
-    project.to_json
-  end
 
-  get '/skills' do 
-    skills = Skill.limit(10).all
+
+
+  get '/skills/:user_id' do
+    user = User.find(params[:user_id])
+    skills = user.skills
     skills.to_json
   end
 
   post '/skills' do
     skill = Skill.create(
-      name:params[:name]
+      name:params[:name], user_id:params[:user_id]
+      
     )
     skill.to_json
   end
@@ -60,7 +54,7 @@ class ApplicationController < Sinatra::Base
     )
 
     if new_user.valid?
-      session[:user_id] = new_user.id
+      #session[:user_id] = new_user.id
       { user: new_user }.to_json
     else
       status 401
@@ -76,9 +70,9 @@ end
     user = User.find_by(email: params[:email])
  # && user.authenticate(params[:password])
       if user
-        session[:user_id] = user.id
+       # session[:user_id] = user.id
+       user.to_json
       
-        redirect "http://localhost:3000/projects"
         
       else
         status 401
@@ -86,6 +80,18 @@ end
       end
    end
 
-
-
+   get '/projects/:user_id' do
+   # if session[:user_id]
+      user = User.find(params[:user_id])
+    projects = user.projects
+    projects.to_json
+  end
+  #  else
+    #  {error:"Login to see projects"}
+ #   end
+  delete '/projects/:id' do
+    project = Project.find(params[:id])
+    project.destroy
+    project.to_json
+  end
 end

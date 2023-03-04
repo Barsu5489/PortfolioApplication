@@ -14,7 +14,7 @@ const [error, setError] = useState('')
     fetch('http://localhost:9292/login',{
       method: 'POST',
       headers:{
-        'Contetnt-Type':'application/json'
+        'Content-Type':'application/json'
       },
       body: JSON.stringify({
         email: email,
@@ -31,6 +31,7 @@ const [error, setError] = useState('')
       redirect('/')
     }).catch(error=>{
       console.log(error.message)
+      console.log(error.response);
       setError(error.message)
     })
   }
@@ -49,7 +50,7 @@ const [error, setError] = useState('')
         <input type="password" className="form-control"  name="password" id="" placeholder='password' value={password} onChange={e=>setPassword(e.target.value)}/>
         </div>
         <button type="submit" className="btn btn-primary">Log In</button>
-        <div class="forgot-password">
+        <div className="forgot-password">
         <span><p>Don't have an account?</p></span> <p> <span onClick={()=>redirect('/signup')}>Create!</span></p>
     </div>
         <p style={{color:'red'}}>{error}</p>

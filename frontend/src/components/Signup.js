@@ -24,7 +24,6 @@ function Signup() {
             })
         }).then((res)=>{
             if(res.ok){
-                redirect('/')
                 return res.json()
                 
             }else{
@@ -33,8 +32,8 @@ function Signup() {
         }).then((info)=>{
             if(info.error === "Email already exists"){
                 setError(info.error)
-            }
-            
+            }else
+            redirect('/')
         }).catch(error=>{
             console.log(error.message)
             console.log(error.response);
@@ -63,7 +62,7 @@ function Signup() {
             <input type="password" name='password' className="form-control"  placeholder='password'value={password} onChange={(e)=>setPassword(e.target.value)}  required />
         </div>
         <button type="submit" className="btn btn-primary">Signup</button>
-        <div class="forgot-password">
+        <div className="forgot-password">
         <span><p>Already have an account?</p></span> <p> <span onClick={()=>redirect('/auth')}>Login!</span></p>
     </div>
         <p style={{color:'red'}}>{error}</p>
