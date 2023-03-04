@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
     skills.to_json
   end
 
-  post '/skills' do
+  post '/skills/:user_id' do
     skill = Skill.create(
       name:params[:name], user_id:params[:user_id]
       

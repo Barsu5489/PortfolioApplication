@@ -1,6 +1,8 @@
 
 import React, { useEffect, useState } from 'react'
+
 function Skills() {
+  const userId = localStorage.getItem('userId')
 const [skills, setSkills] = useState([])
 
 function handleDelete(id){
@@ -19,13 +21,27 @@ function handleDelete(id){
 }
   
 useEffect(() => {
-  fetch('http://localhost:9292/skills')
+  fetch(`http://localhost:9292/skills/${userId}`)
     .then((res) => res.json())
     .then((data) => setSkills(data))
     .catch((error) => {
       console.error(error);
     });
 }, []);
+
+function handleAddNewSkill(e){
+  e.preventDefault()
+  const formData = new FormData(e.target);
+fetch(`http://localhost:9292/skills/${userId}`,{
+  method:'POST',
+  body:formData
+}).then((res)=>res.json())
+.then((info)=>{
+  console.log(info)
+  setSkills(skills=>[...skills, info])
+
+})
+}
  if (skills === []){
   return
  }
@@ -43,7 +59,6 @@ const skill = skills.map((skill)=>{
 
   )
 })
-
   return (
     <>
     <div className='skillContainer'>
@@ -54,7 +69,7 @@ const skill = skills.map((skill)=>{
       <div className="add-skill">
         <div style={{marginRight:'50%'}}>
 
-          <form action="http://localhost:9292/skills" method="post">
+          <form action={`http://localhost:9292/skills/${userId}`} onSubmit={handleAddNewSkill}>
     <input type="text" name='name' placeholder="Add a skill" required/>
     <button type="submit">Add</button>
     </form>
