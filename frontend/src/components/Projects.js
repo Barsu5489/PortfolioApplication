@@ -5,6 +5,7 @@ function Projects() {
   const userId = localStorage.getItem('userId');
   console.log(userId)
   const [projects, setProject] = useState([])
+  const [edidting, setEditing] = useState(false)
 
 function handleDelete(id){
   fetch(`http://localhost:9292/projects/${id}`,{
@@ -18,6 +19,13 @@ function handleDelete(id){
     }
   })
 }
+ 
+function hanldeEditing(e){
+  setEditing(true)
+}
+function handleSave(e){
+  e.preventDefault()
+}
 
   useEffect(()=>{
     fetch(`http://localhost:9292/projects/${userId}`)
@@ -26,7 +34,7 @@ function handleDelete(id){
      return setProject(data)
     }
       ))
-  },[])
+  },[])//Add use effect dependacy
   console.log(projects)
 
   const userProject = projects.map((project)=>
@@ -40,7 +48,10 @@ function handleDelete(id){
 
       <div className="project" key={project.id}>
       <div className="project__header">
-        <h2 className="project__title">{project.title}</h2> <span><button>Add project</button></span>
+        {edidting ? (
+          <input type="text" value={project.title} onChange={(e)=>handleSave(project.id, e.target.value)}/>
+        ):(<h2 className="project__title">{project.title}</h2>)}
+        
         <p className="project__date">{timeString}</p>
       </div>
       <img src= {project.image_url}alt="missing" srcSet="" />
@@ -52,7 +63,7 @@ function handleDelete(id){
           <li className="project__skill">Skill 3</li>
         </ul>
         <div className="project__buttons">
-          <button className="project__button project__button--edit">Edit</button>
+          <button className="project__button project__button--edit" onClick={hanldeEditing}>Edit</button>
           <button onClick={()=>handleDelete(project.id)}
           className="project__button project__button--delete">Delete</button>
         </div>
@@ -63,8 +74,10 @@ function handleDelete(id){
 
   return (
 <>
+
 <div className="project-page">
-  <h1 className="project-page__title">My Projects</h1>
+  <h1 className="project-page__title">My Projects  <span><button>Add project</button></span></h1>
+  
 
 {userProject}
 </div>
