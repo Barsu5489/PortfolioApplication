@@ -57,6 +57,9 @@ nav {
   display: flex;
   justify-content: space-around;
 }
+.userSummary p{
+  font-size: x-large;
+}
 /* Projects Page */
 /* .projects {
   padding: 40px 0;

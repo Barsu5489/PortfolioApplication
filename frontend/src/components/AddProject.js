@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function AddProject() {
     const userId = localStorage.getItem('userId');
-
+    const redirect = useNavigate()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [repo_url, setRepo_url] = useState('')
@@ -23,6 +24,7 @@ function AddProject() {
         }).then((res)=>{
             if(res.ok){
                 console.log(res)
+                redirect('/projects')
                 return res.json()
             }else{
                 console.log(res)

@@ -33,7 +33,11 @@ const [userId, setUserId] = useState(null)
     }).then((info)=>{
       setUserId(info.user.id)
       console.log(info.user.id)
+      console.log(info.user.last_name)
       localStorage.setItem('userId', info.user.id)
+      localStorage.setItem('userInfo', info.user.first_name, info.user.last_name)
+      localStorage.setItem('userLastName', info.user.last_name)
+
       redirect('/')
     }).catch(error=>{
       console.log(error.message)
