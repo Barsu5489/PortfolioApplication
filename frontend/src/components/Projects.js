@@ -51,9 +51,7 @@ function Projects() {
         ))
   }, [])
 
-  console.log(projects)
 
-  
   const userProject = projects.map((project) => {
     const projectTime = new Date(project.created_at)
     const month = projectTime.toLocaleString('default', { month: 'long' })
