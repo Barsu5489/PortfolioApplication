@@ -102,4 +102,14 @@ end
     project.destroy
     project.to_json
   end
+
+  post '/project/:user_id' do
+    user = User.find(params[:user_id])
+    project = user.projects.create(
+      title: params[:title],
+      description: params[:description],
+      repo_url: params[:repo_url]
+    )
+    project.to_json
+  end
 end

@@ -5,6 +5,7 @@ import Projects from "./Projects";
 import Skills from "./Skills";
 import Auth from "./Auth";
 import Signup from "./Signup";
+import AddProject from "./AddProject";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/skills" element={<Skills />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/addProject" element={<AddProject/>} /> 
       </Routes>
     </BrowserRouter>
   );
