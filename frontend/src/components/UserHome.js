@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function UserHome() {
+
+  const redirect = useNavigate()
   const userInfo = localStorage.getItem('userInfo')
   const userLastName = localStorage.getItem('userLastName')
 
@@ -10,7 +13,10 @@ function UserHome() {
     <>
     <div className='homeContainer'>
     <div className='currentJob'>
-    {userInfo ? (<h1> <span style={{color:'Green'}}>{userInfo}</span>, <br />the Portfolio Picaso</h1>):(<h1>Captain of <br /> the Portfolio Ship</h1>)}
+    {userInfo ? (<h1> <span style={{color:'Green'}}>{userInfo}</span>, <br />the Portfolio Picaso</h1>):(<><h1>Be captain of <br /> the Portfolio Ship <span className='access' onClick={()=>redirect('/auth')}>Get started</span></h1> 
+    
+    </>
+    )}
         
     </div>
     <div className='userImage'>

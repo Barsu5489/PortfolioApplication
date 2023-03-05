@@ -33,7 +33,7 @@ function Signup() {
             if(info.error === "Email already exists"){
                 setError(info.error)
             }else
-            redirect('/')
+            redirect('/auth')
         }).catch(error=>{
             console.log(error.message)
             console.log(error.response);
