@@ -63,7 +63,15 @@ class ApplicationController < Sinatra::Base
   end
 end
 
-
+patch '/project/:id' do
+  project = Project.find(params[:id])
+  project.update(
+    title: params[:title],
+     description: params[:description],
+    repo_url: params[:repo_url]
+    )
+    project.to_json
+end
   
    post '/login' do
     # Find user that has a specific email
