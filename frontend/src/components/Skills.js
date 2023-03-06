@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 function Skills() {
   const userId = localStorage.getItem('userId')
 const [skills, setSkills] = useState([])
-
+const [newSkill, setNewSkills] = useState('')
 function handleDelete(id){
   fetch(`http://localhost:9292/skills/${id}`,{
     method: 'DELETE',
@@ -31,6 +31,9 @@ useEffect(() => {
 
 function handleAddNewSkill(e){
   e.preventDefault()
+  if(skills.length >=10){
+    alert('no more')
+  }
   const formData = new FormData(e.target);
 fetch(`http://localhost:9292/skills/${userId}`,{
   method:'POST',
@@ -70,7 +73,7 @@ const skill = skills.map((skill)=>{
         <div style={{marginRight:'50%'}}>
 
           <form action={`http://localhost:9292/skills/${userId}`} onSubmit={handleAddNewSkill}>
-    <input type="text" name='name' placeholder="Add a skill" required/>
+    <input type="text" name='name' placeholder="Add a skill" value={newSkill} onChange={(e)=>setNewSkills(e.target.value)} required/>
     <button type="submit">Add</button>
     </form>
     </div>

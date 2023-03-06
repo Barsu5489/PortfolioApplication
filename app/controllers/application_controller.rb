@@ -27,10 +27,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/skills/:user_id' do
-    skill = Skill.limit(10).create(
-      name:params[:name], user_id:params[:user_id]
-      
-    )
+    user = User.find(params[:user_id])
+    skill = user.skills.limit(10).create(name:params[:name])
+ 
     skill.to_json
   end
 

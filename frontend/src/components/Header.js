@@ -12,7 +12,7 @@ function Header() {
         </div>
         
         <div className="navbar-links">
-          <NavLink to="/">Currently in Kenya</NavLink>
+          <NavLink to="/addProject">Add Project</NavLink>
           <NavLink to="/auth">Currently working<br /> on REACT</NavLink>
           <NavLink to="/projects">My Projects</NavLink>
           <NavLink to="/skills">Skills</NavLink>
