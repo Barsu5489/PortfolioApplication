@@ -48,6 +48,13 @@ group :development do
   # https://github.com/alexch/rerun
   gem "rerun"
 end
+group :production do
+ # gem "pry", "~> 0.14.1"
+
+  # Automatically reload when there are changes
+  # https://github.com/alexch/rerun
+  gem "rerun"
+end
 
 # These gems will only be used when we are running tests
 group :test do
