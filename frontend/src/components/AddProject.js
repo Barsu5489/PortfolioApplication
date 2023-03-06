@@ -33,7 +33,8 @@ function AddProject() {
     }
 
   return (
-    <div>
+    <div className="addProject-form">
+        <h2>Add Project</h2>
                 <form action="" method="post"  onSubmit={handleSubmit}>
         <div className="form-group">
             <label>Title</label>

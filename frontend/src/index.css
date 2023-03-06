@@ -398,6 +398,17 @@ nav {
   border-radius: 5px;
   margin-top:2%;
 }
+.addProject-form{
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top:7%;
+}
+.addProject-form h2{
+text-align: center;
+}
 
 .login-form h1 {
   font-size: 28px;
