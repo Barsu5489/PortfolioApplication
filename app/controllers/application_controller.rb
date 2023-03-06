@@ -7,12 +7,14 @@ class ApplicationController < Sinatra::Base
     # end
   # Add your routes here
   get "/" do
-    { message: "Good luck with your project!" }.to_json
+    user = User.all
+    user.to_json
   end
   
   #Get all users from db
   get '/users' do
- {message: "testing"}
+    user = User.all
+    user.to_json
   end
 
 
