@@ -17,10 +17,6 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
-
-
-
-
   get '/skills/:user_id' do
     user = User.find(params[:user_id])
     skills = user.skills
