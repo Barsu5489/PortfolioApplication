@@ -12,8 +12,7 @@ class ApplicationController < Sinatra::Base
   
   #Get all users from db
   get '/users' do
-    user = User.all
-    user.to_json
+ {message: "testing"}
   end
 
 
