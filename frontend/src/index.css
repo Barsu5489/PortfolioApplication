@@ -409,6 +409,10 @@ nav {
 .addProject-form h2{
 text-align: center;
 }
+.addProject-form button{
+  width: 20%;
+  margin: 0 auto;
+}
 
 .login-form h1 {
   font-size: 28px;

@@ -49,7 +49,7 @@ function AddProject() {
             <label>Project Url</label>
             <input type="name" name="repo_url" className="form-control"  placeholder="project Url"  value={repo_url} onChange={(e)=>setRepo_url(e.target.value)} required/>
         </div>
-        <button type="submit" className="btn btn-primary">Create</button>
+        <button type="submit" className="btn btn-primary">Add Project</button>
         {/* <div className="forgot-password">
         <span><p>Already have an account?</p></span> <p> <span onClick={()=>redirect('/auth')}>Login!</span></p>
     </div> */}

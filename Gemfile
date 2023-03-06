@@ -34,7 +34,7 @@ gem "sqlite3", "~> 1.4"
 # Require all files in a folder
 gem "require_all", "~> 3.0"
 
-gem "faker"
+gem 'faker', '~> 2.14'
 
 gem "bcrypt"
 
