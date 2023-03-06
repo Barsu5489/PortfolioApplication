@@ -11,7 +11,7 @@ function Signup() {
     const [error, setError] = useState('')
     function handleSubmit(e){
     e.preventDefault()
-        fetch('http://localhost:9292/signup',{
+        fetch('https://new-port.onrender.com/signup',{
             method: 'POST',
             headers:{
                 'Content-Type':'application/json'

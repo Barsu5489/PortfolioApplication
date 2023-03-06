@@ -9,7 +9,7 @@ function Projects() {
   const [editingDescription, setEditingDescription] = useState('');
 
   function handleDelete(id) {
-    fetch(`http://localhost:9292/projects/${id}`, {
+    fetch(`https://new-port.onrender.com/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ function Projects() {
   }
 
   function handleSave(id, title, description) {
-    fetch(`http://localhost:9292/project/${id}`, {
+    fetch(`https://new-port.onrender.com/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ function Projects() {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:9292/projects/${userId}`)
+    fetch(`https://new-port.onrender.com/${userId}`)
       .then(res => res.json()
         .then(data => {
           return setProject(data)

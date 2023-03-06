@@ -6,7 +6,7 @@ function Skills() {
 const [skills, setSkills] = useState([])
 const [newSkill, setNewSkills] = useState('')
 function handleDelete(id){
-  fetch(`http://localhost:9292/skills/${id}`,{
+  fetch(`https://new-port.onrender.com/${id}`,{
     method: 'DELETE',
     headers:{
       'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ function handleDelete(id){
 }
   
 useEffect(() => {
-  fetch(`http://localhost:9292/skills/${userId}`)
+  fetch(`https://new-port.onrender.com/${userId}`)
     .then((res) => res.json())
     .then((data) => setSkills(data))
     .catch((error) => {
@@ -35,7 +35,7 @@ function handleAddNewSkill(e){
     alert('no more')
   }
   const formData = new FormData(e.target);
-fetch(`http://localhost:9292/skills/${userId}`,{
+fetch(`https://new-port.onrender.com/${userId}`,{
   method:'POST',
   body:formData
 }).then((res)=>res.json())
@@ -72,7 +72,7 @@ const skill = skills.map((skill)=>{
       <div className="add-skill">
         <div style={{marginRight:'50%'}}>
 
-          <form action={`http://localhost:9292/skills/${userId}`} onSubmit={handleAddNewSkill}>
+          <form action={`https://new-port.onrender.com/${userId}`} onSubmit={handleAddNewSkill}>
     <input type="text" name='name' placeholder="Add a skill" value={newSkill} onChange={(e)=>setNewSkills(e.target.value)} required/>
     <button type="submit">Add</button>
     </form>
