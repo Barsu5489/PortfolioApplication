@@ -6,7 +6,7 @@ function Skills() {
 const [skills, setSkills] = useState([])
 const [newSkill, setNewSkills] = useState('')
 function handleDelete(id){
-  fetch(`https://new-port.onrender.com/${id}`,{
+  fetch(`https://port-folio-xtgn.onrender.com/skills/${id}`,{
     method: 'DELETE',
     headers:{
       'Content-Type': 'application/json'
@@ -14,6 +14,7 @@ function handleDelete(id){
   })
   .then((res)=> {
     if(res.ok){
+      console.log(res)
       setSkills(skills => skills.filter(skill=>skill.id !== id))
       console.log(skills)
     }
@@ -21,9 +22,9 @@ function handleDelete(id){
 }
   
 useEffect(() => {
-  fetch(`https://new-port.onrender.com/${userId}`)
+  fetch(`https://port-folio-xtgn.onrender.com/skills/${userId}`)
     .then((res) => res.json())
-    .then((data) => setSkills(data))
+    .then((data) => setSkills(data.data))
     .catch((error) => {
       console.error(error);
     });
@@ -31,17 +32,17 @@ useEffect(() => {
 
 function handleAddNewSkill(e){
   e.preventDefault()
-  if(skills.length >=10){
-    alert('no more')
+  if(skills.length > 8){
+    alert('Skills Limit reached')
   }
   const formData = new FormData(e.target);
-fetch(`https://new-port.onrender.com/${userId}`,{
+fetch(`https://port-folio-xtgn.onrender.com/skills/${userId}`,{
   method:'POST',
   body:formData
 }).then((res)=>res.json())
 .then((info)=>{
-  console.log(info)
-  setSkills(skills=>[...skills, info])
+  console.log(info.data)
+  setSkills(skills=>[...skills, info.data])
 
 })
 }
@@ -72,7 +73,7 @@ const skill = skills.map((skill)=>{
       <div className="add-skill">
         <div style={{marginRight:'50%'}}>
 
-          <form action={`https://new-port.onrender.com/${userId}`} onSubmit={handleAddNewSkill}>
+          <form action={`https://port-folio-xtgn.onrender.com/skills/${userId}`} onSubmit={handleAddNewSkill}>
     <input type="text" name='name' placeholder="Add a skill" value={newSkill} onChange={(e)=>setNewSkills(e.target.value)} required/>
     <button type="submit">Add</button>
     </form>

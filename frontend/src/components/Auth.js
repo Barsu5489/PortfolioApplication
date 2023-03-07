@@ -13,7 +13,7 @@ const [userId, setUserId] = useState(null)
   function handleLogin(e){
     e.preventDefault(); 
 
-    fetch('https://new-port.onrender.com/login',{
+    fetch('https://port-folio-xtgn.onrender.com/login',{
       method: 'POST',
       headers:{
         'Content-Type':'application/json'
@@ -31,14 +31,16 @@ const [userId, setUserId] = useState(null)
         throw new Error('Invalid email or Password')
       }
     }).then((info)=>{
-      setUserId(info.user.id)
-      console.log(info.user.id)
-      console.log(info.user.last_name)
-      localStorage.setItem('userId', info.user.id)
-      localStorage.setItem('userInfo', info.user.first_name, info.user.last_name)
-      localStorage.setItem('userLastName', info.user.last_name)
+     
+      console.log(info)
+      setUserId(info.data.user.id)
+      console.log(info.data.user.last_name)
+      localStorage.setItem('userId', info.data.user.id)
+      localStorage.setItem('userInfo', info.data.user.first_name)
+      localStorage.setItem('userLastName', info.data.user.last_name)
 
       redirect('/')
+      window.location.reload();
     }).catch(error=>{
       console.log(error.message)
       console.log(error.response);
@@ -61,7 +63,7 @@ const [userId, setUserId] = useState(null)
         </div>
         <button type="submit" className="btn btn-primary">Log In</button>
         <div className="forgot-password">
-        <span><p>Don't have an account?</p></span> <p> <span onClick={()=>redirect('/signup')}>Create!</span></p>
+        <span><p>Don't have an account?</p></span> <p className='link'> <span onClick={()=>redirect('/signup')}>Create!</span></p>
     </div>
         <p style={{color:'red'}}>{error}</p>
         

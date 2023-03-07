@@ -6,11 +6,13 @@ import Skills from "./Skills";
 import Auth from "./Auth";
 import Signup from "./Signup";
 import AddProject from "./AddProject";
+import { useState } from "react";
 
 function App() {
+  const [userInfo, setUserInfo] = useState(localStorage.getItem('userInfo'));
   return (
     <BrowserRouter>
-      <Header />
+       <Header userInfo={userInfo} />
       <Routes>
         <Route path="/" element={<UserHome />} />
         <Route path="/projects" element={<Projects />} />

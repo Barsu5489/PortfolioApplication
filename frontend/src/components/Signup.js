@@ -11,7 +11,7 @@ function Signup() {
     const [error, setError] = useState('')
     function handleSubmit(e){
     e.preventDefault()
-        fetch('https://new-port.onrender.com/signup',{
+        fetch('https://port-folio-xtgn.onrender.com/signup',{
             method: 'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -63,7 +63,7 @@ function Signup() {
         </div>
         <button type="submit" className="btn btn-primary">Signup</button>
         <div className="forgot-password">
-        <span><p>Already have an account?</p></span> <p> <span onClick={()=>redirect('/auth')}>Login!</span></p>
+        <span><p>Already have an account?</p></span> <p className='link'> <span onClick={()=>redirect('/auth')}>Login!</span></p>
     </div>
         <p style={{color:'red'}}>{error}</p>
         </form>

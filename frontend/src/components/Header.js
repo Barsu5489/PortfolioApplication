@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function Header() {
-  const userInfo = localStorage.getItem('userInfo')
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const storedUserInfo = localStorage.getItem('userInfo');
+    setUserInfo(storedUserInfo);
+  }, []);
+
+  function handleLogout() {
+    localStorage.removeItem('userInfo');
+    setUserInfo(null);
+    window.location.reload();
+  }
   return (
     <>
     
@@ -12,26 +23,15 @@ function Header() {
         </div>
         
         <div className="navbar-links">
-          <NavLink to="/addProject">Add Project</NavLink>
-          <NavLink to="/auth">Currently working<br /> on REACT</NavLink>
+          {/* <NavLink to="/auth">Currently working<br /> on REACT</NavLink> */}
           <NavLink to="/projects">My Projects</NavLink>
           <NavLink to="/skills">Skills</NavLink>
+          <NavLink to="/addProject">Add Project</NavLink>
+          <button className='btn-logout' onClick={handleLogout}>Log Out</button>
         </div>
       </nav>):(  <nav>     <div className="navbar-logo">
           <NavLink to="/">🅿️ortfoli-yoh! </NavLink>
         </div> </nav> )}
-      {/* <nav>
-        <div className="navbar-logo">
-          <NavLink to="/">🅿️ortfoli-yoh! </NavLink>
-        </div>
-        
-        <div className="navbar-links">
-          <NavLink to="/">Currently in Kenya</NavLink>
-          <NavLink to="/auth">Currently working<br /> on REACT</NavLink>
-          <NavLink to="/projects">My Projects</NavLink>
-          <NavLink to="/skills">Skills</NavLink>
-        </div>
-      </nav> */}
     
     </>
   );
