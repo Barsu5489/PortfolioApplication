@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const redirect =  useNavigate()
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -12,6 +14,7 @@ function Header() {
   function handleLogout() {
     localStorage.removeItem('userInfo');
     setUserInfo(null);
+    redirect('/auth')
     window.location.reload();
   }
   return (
