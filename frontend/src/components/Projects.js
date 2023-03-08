@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 function Projects() {
   const redirect = useNavigate() 
   const userId = localStorage.getItem('userId');
-  console.log(userId)
   const [projects, setProject] = useState([])
   const [editingId, setEditingId] = useState(null);
   const [editingTitle, setEditingTitle] = useState('');
@@ -24,9 +23,9 @@ function Projects() {
   }
 
   function handleEdit(id) {
-    setEditingId(id);
-    setEditingTitle(projects.find(project => project.id === id).title);
-    setEditingDescription(projects.find(project => project.id === id).description);
+      setEditingId(id);
+      setEditingTitle(projects.find(project => project.id === id).title);
+      setEditingDescription(projects.find(project => project.id === id).description);
   }
 
   function handleSave(id, title, description) {

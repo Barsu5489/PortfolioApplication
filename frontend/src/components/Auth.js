@@ -1,14 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Projects from './Projects';
 function Auth() {
-  console.log('Auth component rendered');
   const redirect = useNavigate()
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [error, setError] = useState('')
-const [userId, setUserId] = useState(null)
 
   function handleLogin(e){
     e.preventDefault(); 
@@ -24,17 +21,12 @@ const [userId, setUserId] = useState(null)
       })
     }).then((res)=>{
       if(res.ok){
-        console.log(res.ok)
-        console.log(res)
         return res.json()
       }else{
         throw new Error('Invalid email or Password')
       }
     }).then((info)=>{
-     
-      console.log(info)
       setUserId(info.data.user.id)
-      console.log(info.data.user.last_name)
       localStorage.setItem('userId', info.data.user.id)
       localStorage.setItem('userInfo', info.data.user.first_name)
       localStorage.setItem('userLastName', info.data.user.last_name)
@@ -42,12 +34,9 @@ const [userId, setUserId] = useState(null)
       redirect('/')
       window.location.reload();
     }).catch(error=>{
-      console.log(error.message)
-      console.log(error.response);
       setError(error.message)
     })
   }
-  console.log('userId')
   return (
     <>
         <div className="login-form">

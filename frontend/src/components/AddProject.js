@@ -24,11 +24,9 @@ function AddProject() {
             })
         }).then((res)=>{
             if(res.ok){
-                console.log(res)
+               
                 redirect('/projects')
                 return res.json()
-            }else{
-                console.log(res)
             }
         })
     }

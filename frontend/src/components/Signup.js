@@ -35,8 +35,6 @@ function Signup() {
             }else
             redirect('/auth')
         }).catch(error=>{
-            console.log(error.message)
-            console.log(error.response);
             setError(error.message)
         })
     }

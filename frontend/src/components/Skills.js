@@ -14,9 +14,7 @@ function handleDelete(id){
   })
   .then((res)=> {
     if(res.ok){
-      console.log(res)
       setSkills(skills => skills.filter(skill=>skill.id !== id))
-      console.log(skills)
     }
   })
 }
@@ -25,9 +23,7 @@ useEffect(() => {
   fetch(`https://port-folio-xtgn.onrender.com/skills/${userId}`)
     .then((res) => res.json())
     .then((data) => setSkills(data.data))
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch((error) => error);
 }, []);
 
 function handleAddNewSkill(e){
@@ -41,7 +37,6 @@ fetch(`https://port-folio-xtgn.onrender.com/skills/${userId}`,{
   body:formData
 }).then((res)=>res.json())
 .then((info)=>{
-  console.log(info.data)
   setSkills(skills=>[...skills, info.data])
 
 })
