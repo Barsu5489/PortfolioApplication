@@ -1,5 +1,6 @@
 # Portfolio Application
-- The application has been built with Ruby for backend and React for frontend. Deployed at [https://porfolio-application.vercel.app/]
+- The application has been built with Ruby for backend and React for frontend.
+- Deployed at [https://porfolio-application.vercel.app/].
 - The Back-end API has been deployed at [https://port-folio-xtgn.onrender.com]
 - This serves as a back-end API for a Portfoliomanagement system. The app uses ActiveRecord as an ORM and has three models: User, Project, and Skill.
 
